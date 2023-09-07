@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Inspect Console !!</h1>
+    <script>
+        let obj = {}
+        console.log(obj)
+        function doubleProt(){
+            this.fun = function(){ // violates dry rule 
+
+            }
+        }
+        let o1 = new doubleProt()
+        console.log(o1)
+
+        // fix for dry rule note : remove the functio inside the obj
+        doubleProt.prototype.fun = function(){
+            console.log('world')
+        }
+
+    </script>
+</body>
+</html>
