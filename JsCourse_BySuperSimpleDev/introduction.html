@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro</title>
+</head>
+<body>
+    <button class="b1">Add to cart</button>
+    <button class="b2">+2</button>
+    <button class="b3">+3</button>
+    <script>
+        var a = 0;
+        let button1 = document.querySelector('.b1')
+        let button2 = document.querySelector(".b2")
+        let button3 = document.querySelector(".b3")
+        let increment = function (v){
+            a+=v;
+            console.log(a)
+        }
+
+        button1.addEventListener('click',function handleclick1(){return increment(1)})
+        button2.addEventListener('click',function handleclick2(){return increment(2)})
+        button3.addEventListener('click',function handleclick3(){return increment(3)})
+
+    </script>
+</body>
+</html>
