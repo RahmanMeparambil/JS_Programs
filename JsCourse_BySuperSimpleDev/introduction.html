@@ -4,16 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intro</title>
+    <style>
+        .b_subscribe{
+            padding:10px;
+            margin:30px;
+            background-color: #333;
+            color:white;
+            border-style:none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .b_subscribed{
+            background-color: rgb(222, 230, 230);
+            color:black;
+        }
+
+    </style>
 </head>
 <body>
     <button class="b1">Add to cart</button>
     <button class="b2">+2</button>
     <button class="b3">+3</button>
+    <div>
+        <button class="b_subscribe" onclick="let b = document.querySelector('.b_subscribe'); b.innerHTML = b.innerHTML=== 'Subscribe' ?'Subscribed':'Subscribe';if(b.innerHTML === 'Subscribed'){b.classList.add('b_subscribed')}else{b.classList.remove('b_subscribed')};">Subscribe</button>
+    </div>
+    <div>
+        <input type="text" placeholder="Enter the cost and press 'Enter'" class="in_cost" onkeydown="if (this.value.trim() === '') display.innerHTML = ''; else display.innerHTML = 'typing...'" onblur="display.innerHTML = '';">
+    </div>
+    <div class="display"></div>
     <script>
         var a = 0;
         let button1 = document.querySelector('.b1')
         let button2 = document.querySelector(".b2")
         let button3 = document.querySelector(".b3")
+        let in_cost = document.querySelector(".in_cost")
+        let display = document.querySelector('.display')
+
         let increment = function (v){
             a+=v;
             console.log(a)
@@ -22,6 +50,24 @@
         button1.addEventListener('click',function handleclick1(){return increment(1)})
         button2.addEventListener('click',function handleclick2(){return increment(2)})
         button3.addEventListener('click',function handleclick3(){return increment(3)})
+        in_cost.addEventListener('keydown',function(event){
+            if (event.key == 'Enter'){
+                let v = Number(in_cost.value)
+                if (v){
+                    if (v<40){
+                        display.innerHTML = `$${v+10}`
+                    }
+                    else{
+                        display.innerHTML = `$${v}`
+                    }
+                }
+                else{
+                    display.innerHTML = `$`
+                }
+            }
+        })
+
+        
 
     </script>
 </body>
