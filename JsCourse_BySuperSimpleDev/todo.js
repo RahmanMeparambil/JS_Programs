@@ -12,7 +12,6 @@ let tasks =  {
         }
         this.tasks.push({task,date}) 
         this.displayTasks()       
-        // console.log(this.getTasks())
     },
     delTask(id){
         this.tasks.splice(id,1)
@@ -22,11 +21,15 @@ let tasks =  {
         return this.tasks
     },
     displayTasks(){
-        display = "";
+        display = '';
         for(let i=0;i<this.tasks.length;i++){
-            display+=`<p>${this.tasks[i].task}</p><p>${this.tasks[i].date}</p><button class='B_del' onclick='tasks.delTask(${i})'>Delete</button>`
+            display+=`
+            <div>${this.tasks[i].task}</div>
+            <div>${this.tasks[i].date}</div>
+            <button class='B_del' onclick='tasks.delTask(${i})'>Delete</button>`    
         }
         d_display.innerHTML = display;
+        console.log(this.getTasks())
     }
 }
 
