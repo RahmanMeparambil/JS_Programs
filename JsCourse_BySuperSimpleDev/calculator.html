@@ -4,23 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+        .session{
+            width:100%;
+            height:100vh;
+            background-color: #e3f9ff;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .calculator {
+            background-color: #123;
+            padding:20px;
+            border-radius: 10px;
+
+        }
+        .calculator form input{
+            border:0;
+            outline: 0;
+            width:60px; 
+            height:60px;
+            border-radius: 10px;
+            background:transparent;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0,0,0,0.2);
+            font-size:20px;
+            color:#fff;
+            cursor:pointer;
+            margin:10px;
+        }
+        form .display{
+            display: flex;
+            justify-content: flex-end;
+            margin:20px 0;
+        }
+        form .display input{
+            text-align: right;
+            flex:1;
+            font-size:45px;
+            box-shadow:none;
+        }
+        form input.equal{
+            width:145px;
+        }
+
+    </style>
 </head>
 <body>
-    <button class="b1">1</button>
-    <button class="b2">2</button>
-    <button class="b3">3</button>
-    <button class="badd">+</button>
-    <br>
-    <button class="b4">4</button>
-    <button class="b5">5</button>
-    <button class="b6">6</button>
-    <button class="bsub">-</button>
-    <br>
-    <button class="b7">7</button>
-    <button class="b8">8</button>
-    <button class="b9">9</button>
-    <button class="bequal">=</button>
-    <p class="display" id="display"></p>
-    <script src="calculator.js"></script>
+    
+    <div class="session">
+        <div class="calculator">
+            <form>
+                <div class="display">
+                    <input type="text"  name="display" >
+                </div>
+                <div>
+                    <input type="button" value="AC" onclick="display.value=''">
+                    <input type="button" value="DE" onclick="display.value=String(display.value).slice(0,-1)">
+                    <input type="button" value="."  onclick="display.value +=value">
+                    <input type="button" value="/"  onclick="display.value +=value">
+                </div>
+        
+                <div>
+                    <input type="button" value="7" onclick="display.value+=value">
+                    <input type="button" value="8" onclick="display.value +=value">
+                    <input type="button" value="9" onclick="display.value +=value">
+                    <input type="button" value="*" onclick="display.value +=value">
+                </div>
+        
+                <div>
+                    <input type="button" value="4" onclick="display.value +=value">
+                    <input type="button" value="5" onclick="display.value +=value">
+                    <input type="button" value="6" onclick="display.value +=value">
+                    <input type="button" value="-" onclick="display.value +=value">
+                </div>
+                <div>
+                    <input type="button" value="1" onclick="display.value +=value">
+                    <input type="button" value="2" onclick="display.value +=value">
+                    <input type="button" value="3" onclick="display.value +=value">
+                    <input type="button" value="+" onclick="display.value +=value">
+                </div>
+                <div>
+                    <input type="button" value="00" onclick="display.value +=value">
+                    <input type="button" value="0" onclick="display.value +=value">
+                    <input type="button" value="=" class="equal" onclick="display.value =eval(display.value)">  
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
