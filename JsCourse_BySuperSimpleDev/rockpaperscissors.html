@@ -27,6 +27,7 @@
         }
         button{
             padding:10px 20px;
+            margin:10px;
             border-radius:20px;
             border-style:none;
             font-weight: bold;
@@ -36,10 +37,17 @@
             background: transparent;
             border-style: none;
         }
+        .result img{
+            width:50px;
+            height:50px;
+        }
 
     </style>
 </head>
 <body>
+    <center>
+
+
     <h1>Rock-Paper-Scissors</h1>
     <button class="b_rock"><img src="img/rock-emoji.png" class="rock" alt=""></button>
     <button class="b_papper"><img src="img/papper-emoji.png" alt=""></button>
@@ -53,9 +61,11 @@
 
     </div>
     <div class="result"></div>
+</center>
 
 
     <script>
+
         let intervalId ;
         let isAutoplay = false ;
         let score =JSON.parse(localStorage.getItem('score'))||{
@@ -100,6 +110,7 @@
             else if(move === 'papper'){
                 if (cmove === 'rock'){
                     score.wins+=1
+
                 }
                 else {
                     score.loss +=1
@@ -114,7 +125,13 @@
                 }
             }
             localStorage.setItem('score',JSON.stringify(score))
-            document.querySelector('.result').innerHTML = `Your <img src="img/${move}-emoji.png"> Computer Move <img src="img/${cmove}-emoji.png">`
+            if (isAutoplay){
+                document.querySelector('.result').innerHTML = `Player1 <img src="img/${move}-emoji.png"> Player2 <img src="img/${cmove}-emoji.png">`
+            }
+            else{
+                document.querySelector('.result').innerHTML = `You <img src="img/${move}-emoji.png"> Computer <img src="img/${cmove}-emoji.png">`
+
+            }
             display()
         }
         function reset(){
@@ -129,7 +146,7 @@
         }
 
         function display(){
-            b_display.innerHTML = `<p>Wins :${score.wins} Loss :${score.loss} Draw:${score.draw}</p>`
+            b_display.innerHTML = `<p><strong>Wins :</strong>${score.wins} <strong>Loss :</strong>${score.loss} <strong>Draw:</strong>${score.draw}</p>`
         }
 
         function autoplay(){
